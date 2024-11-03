@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #0e0e0e;
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+#particles-js, #particles-js-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Title style for PHA5E */
+.hero-title .title {
+  font-size: 160px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-text-stroke: 1px #fff;
+  color: transparent;
+  background-image: linear-gradient(#fff, #fff);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-position: -750px 0;
+  animation: backcolor 1.5s linear forwards;
+}
+
+@keyframes backcolor {
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Second page styles */
+.hero-description {
+  font-size: 6rem;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.animated-description {
+  font-size: 5rem;
+  -webkit-text-stroke: 1px #fff;
+  color: transparent;
+  background-image: linear-gradient(#fff, #fff);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-position: -750px 0;
+  animation: fillText 1.5s linear forwards;
+}
+
+/* Corner images */
+.corner-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Set up general styles for all images */
+/* General styles for images */
+.corner-image {
+  position: absolute;
+  width: 385px;
+  height: 200px;
+  object-fit: cover;
+  opacity: 0.5;
+  transition:  opacity 0.3s, filter 0.3s;
+  z-index: 1;
+  cursor: pointer; /* Add pointer cursor */
+}
+
+/* Brighten and scale up hovered image */
+.corner-image:hover {
+  filter: blur(0);
+  opacity: 1;
+  transform: scale(1.2); /* Slight zoom effect */
+  z-index: 10;
+  cursor: pointer; /* Ensures cursor stays as pointer on hover */
+}
+
+
+/* When any image is hovered, blur the entire section including non-hovered images, text, and other page elements */
+.corner-images:hover .corner-image:not(:hover),
+.corner-images:hover ~ .hero-content,
+.corner-images:hover ~ .hero-title,
+.corner-images:hover ~ .hero-description,
+.corner-images:hover ~ .animated-description
+.corner-images:hover ~ .description-word {
+  filter: blur(5px); /* Apply blur effect */
+  opacity: 0.2; /* Dim non-hovered elements */
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+/* Add transition for text to blur smoothly */
+.hero-description {
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+/* Ensure text and page content remain clear when no image is hovered */
+.hero-content, .hero-title, .hero-description {
+  filter: blur(0); /* Clear filter when not hovered */
+  opacity: 1;
+}
+
+
+.hero-content, .hero-title {
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+/* Blur the text and other page content only when any image is hovered */
+.corner-image:hover ~ .hero-content,
+.corner-image:hover ~ .hero-title {
+  filter: blur(5px);
+  opacity: 0.3;
+}
+
+
+.corner-image.top-left {
+  top: 10%;
+  left: -80%;
+  right:100%;
+
+}
+
+.corner-image.top-right {
+  top: 10%;
+  right: 10%;
+  left:100%;
+
+
+}
+
+.corner-image.bottom-left {
+  bottom: 10%;
+  left: -80%;
+  right:100%;
+}
+
+.corner-image.bottom-right {
+  bottom: 10%;
+  right: 10%;
+  left:100%;
+}
+
+/* .corner-image:hover {
+  transform: scale(1.5);
+  opacity: 1;
+} */
+
+@keyframes fillText {
+  0% {
+    background-position: -750px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
